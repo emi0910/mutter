@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Example",
+    @user = User.new(name: "example",
                      password: "password",
                      password_confirmation: "password")
   end
@@ -26,6 +26,28 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "name should be accept valid string" do
+    valid_names = %w[alice bob1024 carol-dave_eve]
+    valid_names.each do |name|
+      @user.name = name
+      assert @user.valid?, "#{name} shoud be valid"
+    end
+  end
+
+  test "name shoud no be accept invalid string" do
+    invalid_names = %w[@abcde -abcef 10;000]
+    invalid_names.each do |name|
+      @user.name = name
+      assert_not @user.valid?, "#{name} shoud not be valid"
+    end
+  end
+
+  test "name should be unique" do
+    duplicate_user = @user.dup
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+
   test "password should not be too short" do
     @user.password = "a"*4
     assert_not @user.valid?
@@ -34,29 +56,5 @@ class UserTest < ActiveSupport::TestCase
   test "password should not be too long" do
     @user.name = "a" * 256
     assert_not @user.valid?
-  end
-
-  test "password should be accept valid password" do
-    valid_passwords = %w[abcdef a10b20 10000]
-    valid_passwords.each do |pass|
-      @user.password = pass
-      @user.password_confirmation = pass
-      assert @user.valid?, "#{pass} shoud be valid"
-    end
-  end
-
-  test "password shoud no be accept invalid password" do
-    invalid_passwords = %w[@abcde abc-ef 10000_]
-    invalid_passwords.each do |pass|
-      @user.password = pass
-      @user.password_confirmation = pass
-      assert_not @user.valid?, "#{pass} shoud not be valid"
-    end
-  end
-
-  test "name should be unique" do
-    duplicate_user = @user.dup
-    @user.save
-    assert_not duplicate_user.valid?
   end
 end
