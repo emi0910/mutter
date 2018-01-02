@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  get '/home', to: 'welcome#index'
-  get '/signup', to: 'users#new'
+  get  '/home',   to: 'welcome#index'
+  get  '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+  resources :users, :except => [:create, :new]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
