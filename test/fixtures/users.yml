@@ -3,6 +3,7 @@
 example:
     name: Example
     password_digest: <%= User.digest('password') %>
+    admin: true
 
 other:
     name: Other
