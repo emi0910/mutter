@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Success to create new user."
+      flash[:success] = "User was successfully created."
       redirect_to @user
     else
       render 'new'
@@ -51,14 +51,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :nickname, :password,
                                  :password_confirmation)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
   end
 
   def correct_user

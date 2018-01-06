@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
-
+  has_many :articles, dependent: :destroy
   VALID_NAME_REGEXP = /\A[a-z\d][a-z\d\-_]+\z/i
   validates :name, presence: true, length: {maximum: 50}, uniqueness: true,
             format: {with: VALID_NAME_REGEXP}
@@ -8,6 +7,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 5, maximum: 255},
             allow_nil: true
   has_secure_password
+
+  attr_accessor :remember_token
 
   def remember
     self.remember_token = User.new_token

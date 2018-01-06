@@ -1,0 +1,23 @@
+<%= form_for(@article) do |f| %>
+  <%= render 'shared/error_messages', object: @article %>
+
+  <%= f.hidden_field :user_id %>
+
+  <div class="field form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-contorol' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+
+  <%= f.hidden_field :count %>
+
+  <div class="field form-group">
+    <%= f.text_area :content, class: 'form-control', rows: 20, wrap: :off %>
+  </div>
+
+  <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+<% end %>
