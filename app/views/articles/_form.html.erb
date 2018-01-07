@@ -3,21 +3,24 @@
 
   <%= f.hidden_field :user_id %>
 
-  <div class="field form-group">
+  <div class="input-field">
+    <%= f.text_field :title, class: 'validate' %>
     <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-contorol' %>
   </div>
 
-  <div class="field">
-    <%= f.label :public %>
-    <%= f.check_box :public %>
-  </div>
+  <%= f.check_box :public %>
+  <%= f.label :public %>
 
   <%= f.hidden_field :count %>
 
-  <div class="field form-group">
-    <%= f.text_area :content, class: 'form-control', rows: 20, wrap: :off %>
+  <div class="input-field">
+    <i class="material-icons prefix">create</i>
+    <%= f.text_area :content, class: 'materialize-textarea', rows: 20, wrap: :off %>
+    <%= f.label :content %>
   </div>
 
-  <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+  <%= f.button class: 'btn' do %>
+    <%= yield(:button_text) %>
+    <i class="material-icons right">send</i>
+  <% end %>
 <% end %>

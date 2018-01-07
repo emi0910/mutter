@@ -1,0 +1,15 @@
+@import "materialize/components/color";
+$primary-color: color("cyan", "lighten-1") !default;
+@import 'materialize';
+@import 'material_icons';
+@import url('https://fonts.googleapis.com/css?family=Play:400,700');
+
+div.initialize ul {
+    padding-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+div.initialize ul li {
+    list-style-type: initial;
+}

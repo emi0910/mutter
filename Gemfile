@@ -11,6 +11,8 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.6.4'
 gem 'kramdown',     '1.16.2'
+gem 'materialize-sass', '0.100.2'
+gem 'material_icons', '2.2.1'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'

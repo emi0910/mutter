@@ -1,13 +1,18 @@
 class ArticlesController < ApplicationController
   before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
 
+  def index
+    # IMPOROVE THIS: Pagenate and show only publiced
+    @articles = Article.all
+  end
+
   def show
     @article = Article.find(params[:id])
     logged_in_user unless @article.public?
   end
 
   def new
-    @article = Article.new(content: "<!-- folding -->")
+    @article = Article.new
   end
 
   def create

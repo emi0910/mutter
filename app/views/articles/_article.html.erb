@@ -1,0 +1,8 @@
+<li>
+  <div class="collapsible-header"> <%= article.title %> </div>
+  <div class="collapsible-body initialize">
+    <div class="clear"></div>
+    <%= raw Kramdown::Document.new(article.content, input: "GFM").to_html %>
+    <div class="clear"></div>
+  </div>
+</li>

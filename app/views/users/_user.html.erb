@@ -1,7 +1,10 @@
-<li>
-  <%= link_to user.nickname || user.name, user %>
+<li class="collection-item avator">
+  <i class="material-icons circle">account_circle</i>
+  <span class="title"><%= link_to user.nickname || user.name, user %></span>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-          data: { confirm: "You sure?" } %>
+    <%= link_to user, method: :delete,
+        class: "secondary-content", data: { confirm: "You sure?" } do %>
+      <i class="material-icons">delete</i>
+    <% end %>
   <% end %>
 </li>
