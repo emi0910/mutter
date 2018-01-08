@@ -1,17 +1,21 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+<%= form_for(:session, url: login_path) do |f| %>
+  <div class="input-field">
+    <i class="material-icons prefix">account_box</i>
+    <%= f.text_field :name, class: 'validate' %>
+    <%= f.label :name %>
   </div>
-</div>
+
+  <div class="input-field">
+    <i class="material-icons prefix">lock</i>
+    <%= f.password_field :password, class: 'validate' %>
+    <%= f.label :password %>
+  </div>
+
+  <%= f.button class: "btn" do %>
+    Log in
+    <i class="material-icons right">send</i>
+  <% end %>
+<% end %>
