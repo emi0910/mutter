@@ -1,8 +1,18 @@
-<li>
-  <div class="collapsible-header"> <%= article.title %> </div>
-  <div class="collapsible-body initialize">
-    <div class="clear"></div>
-    <%= raw Kramdown::Document.new(article.content, input: "GFM").to_html %>
-    <div class="clear"></div>
+<div class="col s12 m4">
+  <div class="card">
+    <div class="card-image">
+      <!-- for test -->
+      <img src="http://placehold.it/120x60&text=image1">
+    </div>
+
+    <div class="card-content">
+      <span class="card-title">
+        <%= article.title %>
+      </span>
+    </div>
+
+    <div class="card-action">
+      <%= link_to "Read this article", article %>
+    </div>
   </div>
-</li>
+</div>
