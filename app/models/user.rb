@@ -24,6 +24,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def display_name
+    self.nickname || self.name
+  end
+
   class << self
     def digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
