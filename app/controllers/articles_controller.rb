@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    count_up(@article)
     logged_in_user unless @article.public?
   end
 
@@ -34,5 +35,9 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :content, :public)
+  end
+
+  def count_up(article)
+    article.update_attribute(:count, article.count + 1)
   end
 end
