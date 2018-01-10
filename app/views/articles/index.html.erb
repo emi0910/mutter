@@ -1,6 +1,12 @@
 <% provide(:title, 'Articles') %>
 <h1>Articles</h1>
 
-<div class="row">
-  <%= render @articles %>
-</div>
+<%= will_paginate @articles, renderer: MaterializeRenderer %>
+
+<% @articles.each_slice(2) do |articles| %>
+  <div class="row">
+    <%= render articles %>
+  </div>
+<% end %>
+
+<%= will_paginate @articles, renderer: MaterializeRenderer %>

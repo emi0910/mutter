@@ -1,4 +1,4 @@
-<div class="col s12 m4">
+<div class="col s12 m6">
   <div class="card">
     <div class="card-image">
       <!-- for test -->
@@ -7,10 +7,12 @@
 
     <div class="card-content">
       <span class="card-title">
-        <%= article.title %>
-        <% unless article.public? %>
+        <small>
+          <%= article.title %>
+          <% unless article.public? %>
           <i class="material-icons">lock</i>
-        <% end %>
+          <% end %>
+        </small>
       </span>
       <%= article.count %>
     </div>

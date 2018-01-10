@@ -5,8 +5,8 @@ class ArticlesController < ApplicationController
   before_action :count_up, only: :show
 
   def index
-    # IMPOROVE THIS: Pagenate
-    @articles = current_user ? Article.all : Article.publicized
+    paginate_options = { page: params[:page], per_page: 6}
+    @articles = current_user ? Article.paginate(paginate_options) : Article.publicized.paginate(paginate_options)
   end
 
   def show

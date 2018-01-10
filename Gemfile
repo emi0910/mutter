@@ -13,6 +13,8 @@ gem 'jbuilder',     '2.6.4'
 gem 'kramdown',     '1.16.2'
 gem 'materialize-sass', '0.100.2'
 gem 'material_icons', '2.2.1'
+gem 'will_paginate', '3.1.6'
+gem 'will_paginate-materialize', '0.1.0'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
