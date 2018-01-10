@@ -3,7 +3,7 @@
     <div class="card-image">
       <!-- FIXME: This will be filled with user's icon -->
       <img src="http://placehold.it/240x120&text=image1">
-      <% if current_user.admin? && !current_user?(user) %>
+      <% if current_user.try(:admin?) && !current_user?(user) %>
         <%= link_to user, method: :delete,
             class: "btn-floating halfway-fab waves-effect waves-light red",
             data: { confirm: "You sure?" } do %>
