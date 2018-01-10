@@ -1,15 +1,15 @@
 class ArticlesController < ApplicationController
   before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
+  before_action :set_article, only: :show
+  before_action :auth_if_private_article, only: :show
+  before_action :count_up, only: :show
 
   def index
-    # IMPOROVE THIS: Pagenate and show only publiced
-    @articles = Article.all
+    # IMPOROVE THIS: Pagenate
+    @articles = current_user ? Article.all : Article.publicized
   end
 
   def show
-    @article = Article.find(params[:id])
-    count_up(@article)
-    logged_in_user unless @article.public?
   end
 
   def new
@@ -37,7 +37,15 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :content, :public)
   end
 
-  def count_up(article)
-    article.update_attribute(:count, article.count + 1)
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def auth_if_private_article
+    logged_in_user unless @article.public?
+  end
+
+  def count_up
+    @article.update_attribute(:count, @article.count + 1)
   end
 end
