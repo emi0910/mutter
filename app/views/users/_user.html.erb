@@ -1,10 +1,18 @@
-<li class="collection-item avator">
-  <i class="material-icons circle">account_circle</i>
-  <span class="title"><%= link_to user.display_name, user %></span>
-  <% if current_user.admin? && !current_user?(user) %>
-    <%= link_to user, method: :delete,
-        class: "secondary-content", data: { confirm: "You sure?" } do %>
-      <i class="material-icons">delete</i>
-    <% end %>
-  <% end %>
-</li>
+<div class="col s12 m6">
+  <div class="card">
+    <div class="card-image">
+      <!-- FIXME: This will be filled with user's icon -->
+      <img src="http://placehold.it/240x120&text=image1">
+      <% if current_user.admin? && !current_user?(user) %>
+        <%= link_to user, method: :delete,
+            class: "btn-floating halfway-fab waves-effect waves-light red",
+            data: { confirm: "You sure?" } do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="card-content">
+      <span class="title"><%= link_to user.display_name, user %></span>
+    </div>
+  </div>
+</div>
