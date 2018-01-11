@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <ul id="dropdown1" class="dropdown-content">
   <li><%= link_to "Profile", current_user %></li>
   <li><%= link_to "New article", new_article_path %>
@@ -5,6 +6,7 @@
   <li class="divider"></li>
   <li><%= link_to "Log out", logout_path, method: :delete %></li>
 </ul>
+<% end %>
 
 <nav class="top-nav">
   <div class="nav-wrapper">
