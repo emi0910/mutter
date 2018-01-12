@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :articles, dependent: :destroy
+  has_one  :user_info, dependent: :destroy
   VALID_NAME_REGEXP = /\A[a-z\d][a-z\d\-_]+\z/i
   validates :name, presence: true, length: {maximum: 50}, uniqueness: true,
             format: {with: VALID_NAME_REGEXP}

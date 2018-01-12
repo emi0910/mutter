@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   resources :users, :except => [:new]
   resources :articles
+  resources :user_infos, :only => [:update]
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
