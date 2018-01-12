@@ -15,7 +15,9 @@ gem 'materialize-sass', '0.100.2'
 gem 'material_icons', '2.2.1'
 gem 'will_paginate', '3.1.6'
 gem 'will_paginate-materialize', '0.1.0'
-gem 'carrierwave'
+gem 'carrierwave', '~> 0.9'
+gem 'carrierwave-dropbox', :github => 'mful/carrierwave-dropbox'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
