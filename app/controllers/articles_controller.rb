@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @categories = Category.all
   end
 
   def create
@@ -23,6 +24,7 @@ class ArticlesController < ApplicationController
       flash[:success] = "Article was successfully created."
       redirect_to @article
     else
+      @categories = Category.all
       render :new
     end
   end
@@ -34,7 +36,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :public)
+    params.require(:article).permit(:title, :content, :public, :category_id)
   end
 
   def set_article
