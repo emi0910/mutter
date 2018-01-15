@@ -8,7 +8,10 @@
     </div>
 
     <div class="col s4">
-      <%= image_tag @userinfo.icon.url if @userinfo.icon? %>
+      <div class="row">
+        <%= image_tag @userinfo.icon.url, class: 'col s12' if @userinfo.icon? %>
+      </div>
+
       <div class="input-field file-field">
         <div class="btn">
           <span>Image</span>

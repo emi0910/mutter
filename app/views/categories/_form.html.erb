@@ -15,7 +15,10 @@
     </div>
 
     <div class="col s4">
-      <%= image_tag @category.image.url if @category.image? %>
+      <div class="row">
+        <%= image_tag @category.image.url, class: 'col s12' if @category.image? %>
+      </div>
+
       <div class="input-field file-field">
         <div class="btn">
           <span>Image</span>
