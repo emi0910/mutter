@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @articles = (logged_in? ? @user.articles : @user.articles.publicized).take(3)
   end
 
   def new
