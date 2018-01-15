@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     paginate_options = { page: params[:page], per_page: 6}
-    @articles = current_user ? Article.paginate(paginate_options) : Article.publicized.paginate(paginate_options)
+    @articles = (logged_in? ? Article : Article.publicized).paginate(paginate_options)
   end
 
   def show

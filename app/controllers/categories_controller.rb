@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @articles = (current_user ? @category.articles : @category.articles.publicized).take(3)
+    @articles = (logged_in? ? @category.articles : @category.articles.publicized).take(3)
   end
 
   def new
