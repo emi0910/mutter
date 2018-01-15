@@ -13,9 +13,15 @@
   </div>
 
   <div class="col s6">
-    <h5>Articles</h5>
+    <div class="col s12">
+      <h5>Articles</h5>
+    </div>
+
     <%= render @articles, mcol: 'm12', image: false %>
-    <!-- link to articles have this category -->
+
+    <div class="col s12">
+      <%= link_to "more articles...", articles_path(category_id: @category.id) %>
+    </div>
   </div>
 </div>
 

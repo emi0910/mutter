@@ -3,15 +3,24 @@
 <div class="row">
   <div class="col s4">
     <%= image_tag @user.icon, class: 'circle col s12' %>
-    <h5><%= @user.display_name %></h5>
-    <p>
-      <%= @user.user_info.description %>
-    </p>
+    <div class="col s12">
+      <h5><%= @user.display_name %></h5>
+
+      <p>
+        <%= @user.user_info.description %>
+      </p>
+    </div>
   </div>
 
   <div class="col s8">
-    <h5>Articles</h5>
+    <div class="col s12">
+      <h5>Articles</h5>
+    </div>
+
     <%= render @articles, mcol: 'm12', image: false %>
-    <!-- link to articles have this category -->
+
+    <div class="col s12">
+      <%= link_to "more articles...", articles_path(user_id: @user.id) %>
+    </div>
   </div>
 </div>

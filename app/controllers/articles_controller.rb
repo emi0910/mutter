@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     paginate_options = { page: params[:page], per_page: 6}
-    @articles = (logged_in? ? Article : Article.publicized).paginate(paginate_options)
+    @articles = narrow_articles.paginate(paginate_options)
   end
 
   def show
@@ -49,5 +49,12 @@ class ArticlesController < ApplicationController
 
   def count_up
     @article.update_attribute(:count, @article.count + 1)
+  end
+
+  def narrow_articles
+    articles = (logged_in? ? Article : Article.publicized)
+    articles = articles.created_by(params[:user_id]) if params[:user_id]
+    articles = articles.belong_to(params[:category_id]) if params[:category_id]
+    articles
   end
 end
