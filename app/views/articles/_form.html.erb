@@ -14,6 +14,11 @@
   <%= f.hidden_field :count %>
 
   <div class="input-field">
+    <%= f.select :category_id, @categories.map {|c| [c.name, c.id] }.unshift(["Choose category", 0]), selected: 0, disabled: 0 %>
+    <%= f.label "Category" %>
+  </div>
+
+  <div class="input-field">
     <i class="material-icons prefix">create</i>
     <%= f.text_area :content, class: 'materialize-textarea', rows: 20, wrap: :off %>
     <%= f.label :content %>
