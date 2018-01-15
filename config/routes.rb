@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, :except => [:new]
   resources :articles
   resources :user_infos, :only => [:update]
+  resources :categories
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'

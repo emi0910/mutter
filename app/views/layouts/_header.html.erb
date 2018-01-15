@@ -1,7 +1,8 @@
 <% if logged_in? %>
 <ul id="dropdown1" class="dropdown-content">
   <li><%= link_to "Profile", current_user %></li>
-  <li><%= link_to "New article", new_article_path %>
+  <li><%= link_to "New article", new_article_path %></li>
+  <li><%= link_to "New category", new_category_path %></li>
   <li><%= link_to "Settings", current_user && edit_user_path(current_user) %></li>
   <li class="divider"></li>
   <li><%= link_to "Log out", logout_path, method: :delete %></li>
@@ -14,11 +15,12 @@
     <ul class="right">
       <li><%= link_to "About",    '#' %></li>
       <li><%= link_to "Articles", articles_path %></li>
+      <li><%= link_to "Categories", categories_path %></li>
       <li><%= link_to "Authors",  users_path %></li>
       <% if logged_in? %>
       <li>
         <a href="#" class="dropdown-button" data-activates="dropdown1" data-beloworigin="true">
-          Account <i class="material-icons right"> arrow_drop_down </i>
+          Account Menu <i class="material-icons right"> arrow_drop_down </i>
         </a>
       </li>
       <% else %>

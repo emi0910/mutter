@@ -1,0 +1,12 @@
+<% provide(:title, 'Categories') %>
+<h1>Categories</h1>
+
+<%= will_paginate @categories, renderer: MaterializeRenderer %>
+
+<% @categories.each_slice(2) do |categories| %>
+  <div class="row">
+    <%= render categories %>
+  </div>
+<% end %>
+
+<%= will_paginate @categories, renderer: MaterializeRenderer %>
