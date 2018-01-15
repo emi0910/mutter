@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  has_many :articles
+  has_many :articles, dependent: :destroy
   mount_uploader :image, PictureUploader
 
   validates :name, presence: true
