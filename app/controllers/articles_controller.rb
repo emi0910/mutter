@@ -33,6 +33,13 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def preview
+    title = "<h2>#{article_params[:title]}</h2>"
+    clear = "<div class='clear'></div>"
+    render plain: title + Kramdown::Document.new(article_params[:content],
+                                                 input: "GFM").to_html + clear
+  end
+
   private
 
   def article_params

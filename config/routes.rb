@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get  '/home',   to: 'welcome#index'
   get  '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  post '/articles/preview', to: 'articles#preview'
   resources :users, :except => [:new]
   resources :articles
   resources :user_infos, :only => [:update]
