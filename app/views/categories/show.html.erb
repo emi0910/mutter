@@ -17,7 +17,7 @@
       <h5>Articles</h5>
     </div>
 
-    <%= render @articles, mcol: 'm12', image: false %>
+    <%= render @articles, mcol: 'm12' %>
 
     <div class="col s12">
       <%= link_to "more articles...", articles_path(category_id: @category.id) %>
