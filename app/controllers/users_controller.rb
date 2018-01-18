@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save && @user.create_user_info
+    if @user.save
       log_in @user
       flash[:success] = "User was successfully created."
       redirect_to @user
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @userinfo = @user.user_info
+    @userinfo = @user.user_info || @user.build_user_info
   end
 
   def update

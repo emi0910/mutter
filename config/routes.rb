@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/articles/preview', to: 'articles#preview'
   resources :users, :except => [:new]
   resources :articles
-  resources :user_infos, :only => [:update]
+  resources :user_infos, :only => [:create, :update]
   resources :categories
 
   get    '/login',  to: 'sessions#new'
