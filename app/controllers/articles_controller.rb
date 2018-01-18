@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :edit, :update, :destroy, :preview]
   before_action :set_article, only: :show
   before_action :auth_if_private_article, only: :show
   before_action :count_up, only: :show
