@@ -17,6 +17,7 @@ gem 'will_paginate', '3.1.6'
 gem 'will_paginate-materialize', '0.1.0'
 gem 'carrierwave', '~> 0.9'
 gem 'carrierwave-dropbox', :github => 'mful/carrierwave-dropbox'
+gem 'rmagick'
 gem 'dotenv-rails'
 
 group :development, :test do
