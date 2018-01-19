@@ -2,11 +2,24 @@
 <% provide(:button_text, "Create") %>
 <h1>New Article</h1>
 
+<div id="photo_inserter" class="right">
+  <span class="message"></span>
+  &nbsp;
+  <a class="share" href="#" title="Insert to Write pane">
+    <i class="material-icons">share</i>
+  </a>
+  &nbsp;
+  <a class="remove" href="#" title="Clear all marks">
+    <i class="material-icons">cancel</i>
+  </a>
+</div>
+
 <div class="row">
   <div class="col s12">
     <ul class="tabs">
       <li class="tab col s3"><a href="#write">Write</a></li>
       <li class="tab col s3"><a href="#preview" id="preview-tab">Preview</a></li>
+      <li class="tab col s3"><a href="#photos" id="upload-tab">Photos</a></li>
     </ul>
   </div>
 
@@ -15,5 +28,8 @@
   </div>
 
   <div id="preview" class="preview_area col s12">
+  </div>
+
+  <div id="photos" class="col s12">
   </div>
 </div>
