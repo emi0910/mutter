@@ -81,9 +81,9 @@ insertPhotosInTab = () ->
     $('#photos').html photo_entries.map (entry) ->
       thumb = entry.image
       """
-      <div class="thumb-box col s3">
-        <img class="thumb" src="#{thumb.url}" />
-        <i class="material-icons scale-transition scale-out">check</i>
+      <div class="thumb-box col s6 m3">
+        <img class="thumb responsive-img" src="#{thumb.url}" />
+        <i class="small material-icons circle scale-transition scale-out">check</i>
       </div>
       """
 
