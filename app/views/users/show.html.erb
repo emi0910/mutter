@@ -2,12 +2,12 @@
 
 <div class="row">
   <div class="col s4">
-    <%= image_tag @user.icon, class: 'circle col s12' %>
+    <%= image_tag @user.icon, class: 'circle col s12' if @user.user_info %>
     <div class="col s12">
       <h5><%= @user.display_name %></h5>
 
       <p>
-        <%= @user.user_info.description %>
+        <%= @user.user_info.description if @user.user_info %>
       </p>
     </div>
   </div>
