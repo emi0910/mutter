@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  before_action :logged_in_user, only: [:index, :create]
+
   def index
     @images = Image.all
     render json: @images

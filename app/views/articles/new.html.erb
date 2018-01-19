@@ -33,3 +33,16 @@
   <div id="photos" class="col s12">
   </div>
 </div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red waves-effect waves-light modal-trigger" href="#add_photo">
+    <i class="large material-icons">add_a_photo</i>
+  </a>
+</div>
+
+<div id="add_photo" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h5>Add photo</h5>
+    <%= render "images/form" %>
+  </div>
+</div>

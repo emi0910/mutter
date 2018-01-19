@@ -1,0 +1,16 @@
+<%= form_with url: images_path, scope: :image, method: :post do |f| %>
+  <div class="input-field file-field">
+    <div class="btn">
+      <span>Image</span>
+      <%= f.file_field :image %>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text" placeholder="Upload new image">
+    </div>
+  </div>
+
+  <%= f.button id: "submit_photo", class: "btn modal-action modal-close" do %>
+    <%= yield(:button_text) %>
+    <i class="material-icons right">send</i>
+  <% end %>
+<% end %>

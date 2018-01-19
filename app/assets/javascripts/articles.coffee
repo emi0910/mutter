@@ -65,13 +65,7 @@ insertMarkedPhotos = (photo_div) ->
       photo = $(this).children('img')[0]
       insertToWriterPanel "![](#{photo.src}){:width=\"300px\" class=\"photo\"}\n"
 
-$(document).on "turbolinks:load", ->
-  $('select').material_select()
-
-  setupRenderPreviewButton('#preview-tab')
-
-  $('#photo_inserter').children().hide()
-
+insertPhotosInTab = () ->
   $('#photos').html(
     """
     <div class="preloader-wrapper big active">
@@ -107,3 +101,16 @@ $(document).on "turbolinks:load", ->
       insertMarkedPhotos("#photos")
       clearMarkedPhotos("#photos", "#photo_inserter")
       ev.preventDefault()
+
+$(document).on "turbolinks:load", ->
+  $('select').material_select()
+  $('.modal').modal();
+
+  setupRenderPreviewButton('#preview-tab')
+
+  $('#photo_inserter').children().hide()
+
+  insertPhotosInTab()
+
+  $('#submit_photo').on 'click', (ev) ->
+    insertPhotosInTab()

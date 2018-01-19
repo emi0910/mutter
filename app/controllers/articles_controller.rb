@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @categories = Category.all
+    @image = Image.new
   end
 
   def create
@@ -25,6 +26,7 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       @categories = Category.all
+      @image = Image.new
       render :new
     end
   end
