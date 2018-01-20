@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all
-    render json: @images
+    render partial: 'images/images'
   end
 
   def create

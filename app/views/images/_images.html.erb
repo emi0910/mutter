@@ -1,0 +1,7 @@
+<div class="col s12">
+  <% @images.each_slice(4) do |images| %>
+    <div class="row">
+      <%= render images %>
+    </div>
+  <% end %>
+</div>

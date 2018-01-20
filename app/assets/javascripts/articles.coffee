@@ -41,9 +41,9 @@ getPhotoList = (on_success_func) ->
   $.ajax
     url: rootPath + "images"
     type: "GET"
-    dataType: "json"
-    success: (json) ->
-      on_success_func(json)
+    dataType: "html"
+    success: (html, status, xhr) ->
+      on_success_func(html)
 
 countMarkedPhotos = (count_div, inserter_div) ->
   count = $(count_div).find('.marked').length
@@ -78,14 +78,7 @@ insertPhotosInTab = () ->
     """)
 
   getPhotoList (photo_entries) ->
-    $('#photos').html photo_entries.map (entry) ->
-      thumb = entry.image
-      """
-      <div class="thumb-box col s6 m3">
-        <img class="thumb responsive-img" src="#{thumb.url}" />
-        <i class="small material-icons circle scale-transition scale-out">check</i>
-      </div>
-      """
+    $('#photos').html photo_entries
 
     $('div.thumb-box').on 'click', (ev) ->
       $(this).find('img').toggleClass('marked')
