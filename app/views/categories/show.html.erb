@@ -1,7 +1,9 @@
 <% provide(:title, "Category") %>
 
 <div class="row">
-  <%= image_tag @category.image.url, class: 'col s12' %>
+  <div class="col s12">
+    <%= image_tag @category.image.url, class: 'responsive-img' %>
+  </div>
 </div>
 
 <div class="row">

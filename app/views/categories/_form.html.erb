@@ -16,7 +16,9 @@
 
     <div class="col s4">
       <div class="row">
-        <%= image_tag @category.image.url, class: 'col s12' if @category.image? %>
+        <div class="col s12">
+          <%= image_tag @category.image.url, class: 'responsive-img' if @category.image? %>
+        </div>
       </div>
 
       <div class="input-field file-field">

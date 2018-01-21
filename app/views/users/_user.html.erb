@@ -1,5 +1,5 @@
 <li class="collection-item avatar">
-  <%= image_tag user.icon, class: 'circle' if user.user_info %>
+  <%= image_tag user.icon, class: 'circle responsive-img' if user.user_info %>
   <span class="title"><h5><%= link_to user.display_name, user %></h5></span>
   <% if current_user.try(:admin?) && !current_user?(user) %>
     <%= link_to user, method: :delete,
