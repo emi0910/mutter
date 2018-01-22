@@ -1,4 +1,4 @@
-<%= form_with url: images_path, scope: :image, method: :post do |f| %>
+<%= form_with id: "submit_photo", url: images_path, scope: :image, method: :post do |f| %>
   <div class="input-field file-field">
     <div class="btn">
       <span>Image</span>
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <%= f.button id: "submit_photo", class: "btn modal-action modal-close" do %>
+  <%= f.button class: "btn modal-action modal-close" do %>
     <%= yield(:button_text) %>
     <i class="material-icons right">send</i>
   <% end %>

@@ -109,5 +109,6 @@ $(document).on "turbolinks:load", ->
 
   insertPhotosInTab(rootPath + "images")
 
-  $('#submit_photo').on 'click', (ev) ->
+  $('#submit_photo').on 'ajax:success', (ev) ->
     insertPhotosInTab(rootPath + "images")
+    $(this).find('input').val("")

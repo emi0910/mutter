@@ -9,9 +9,9 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save
-      render
+      render plain: "ok"
     else
-      render
+      render plain: "bad request", status: :bad_request
     end
   end
 
