@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_action :logged_in_user, only: [:index, :create]
 
   def index
-    @images = Image.all
+    @images = Image.paginate(page: params[:page], per_page: 12)
     render partial: 'images/images'
   end
 

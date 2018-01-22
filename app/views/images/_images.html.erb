@@ -1,7 +1,9 @@
-<div class="col s12">
-  <% @images.each_slice(4) do |images| %>
-    <div class="row">
-      <%= render images %>
-    </div>
-  <% end %>
-</div>
+<%= will_paginate @images, renderer: MaterializeRenderer, class: 'async-pagination' %>
+
+<% @images.each_slice(4) do |images| %>
+  <div class="row">
+    <%= render images %>
+  </div>
+<% end %>
+
+<%= will_paginate @images, renderer: MaterializeRenderer, class: 'async-pagination' %>

@@ -37,9 +37,9 @@ setupRenderPreviewButton = (selector) ->
         previewArea.empty()
         previewArea.append(html)
 
-getPhotoList = (on_success_func) ->
+getPhotoList = (images_url, on_success_func) ->
   $.ajax
-    url: rootPath + "images"
+    url: images_url
     type: "GET"
     dataType: "html"
     success: (html, status, xhr) ->
@@ -65,7 +65,7 @@ insertMarkedPhotos = (photo_div) ->
       photo = $(this).children('img')[0]
       insertToWriterPanel "![](#{photo.src}){:width=\"300px\" class=\"photo\"}\n"
 
-insertPhotosInTab = () ->
+insertPhotosInTab = (images_url) ->
   $('#photos').html(
     """
     <div class="preloader-wrapper big active">
@@ -77,7 +77,7 @@ insertPhotosInTab = () ->
     <div>
     """)
 
-  getPhotoList (photo_entries) ->
+  getPhotoList images_url, (photo_entries) ->
     $('#photos').html photo_entries
 
     $('div.thumb-box').on 'click', (ev) ->
@@ -95,6 +95,10 @@ insertPhotosInTab = () ->
       clearMarkedPhotos("#photos", "#photo_inserter")
       ev.preventDefault()
 
+    $('.async-pagination a').on 'click', (ev) ->
+      insertPhotosInTab($(this).attr("href"))
+      return false
+
 $(document).on "turbolinks:load", ->
   $('select').material_select()
   $('.modal').modal();
@@ -103,7 +107,7 @@ $(document).on "turbolinks:load", ->
 
   $('#photo_inserter').children().hide()
 
-  insertPhotosInTab()
+  insertPhotosInTab(rootPath + "images")
 
   $('#submit_photo').on 'click', (ev) ->
-    insertPhotosInTab()
+    insertPhotosInTab(rootPath + "images")
