@@ -9,7 +9,16 @@
           <% end %>
         </small>
       </span>
-      <%= article.count %>
+      <span class="right">
+        <i class="material-icons tiny">subject</i>
+        <%= link_to article.category.name, article.category %>
+        &nbsp;
+        <i class="material-icons tiny">person</i>
+        <%= link_to article.user.display_name, article.user %>
+        &nbsp;
+        <i class="material-icons tiny">visibility</i>
+        <%= article.count %>
+      </span>
     </div>
 
     <div class="card-action">
