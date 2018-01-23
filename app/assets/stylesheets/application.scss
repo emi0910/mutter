@@ -4,6 +4,10 @@ $primary-color: color("cyan", "lighten-1") !default;
 @import 'material_icons';
 @import url('https://fonts.googleapis.com/css?family=Play:400,700');
 
+nav, footer {
+    font-family: 'Play', sans-serif;
+}
+
 div.initialize ul {
     padding-left: 30px;
     margin-top: 10px;
