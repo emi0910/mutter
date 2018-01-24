@@ -63,7 +63,7 @@ insertMarkedPhotos = (photo_div) ->
   $(photo_div).find('.thumb-box').each (index) ->
     if $(this).children('.marked').length > 0
       photo = $(this).children('img')[0]
-      insertToWriterPanel "![](#{photo.src}){:width=\"300px\" class=\"photo\"}\n"
+      insertToWriterPanel "![](#{rootPath + photo.id}){:width=\"300px\" class=\"photo\"}\n"
 
 insertPhotosInTab = (images_url) ->
   $('#photos').html(

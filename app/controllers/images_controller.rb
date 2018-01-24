@@ -1,9 +1,14 @@
 class ImagesController < ApplicationController
-  before_action :logged_in_user, only: [:index, :create]
+  before_action :logged_in_user, only: [:index, :create, :show]
 
   def index
     @images = Image.paginate(page: params[:page], per_page: 12)
     render partial: 'images/images'
+  end
+
+  def show
+    @image = Image.find(params[:id])
+    redirect_to @image.image.url
   end
 
   def create

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :articles
   resources :user_infos, :only => [:create, :update]
   resources :categories
-  resources :images, :only => [:index, :create, :destroy]
+  resources :images, :only => [:index, :show, :create, :destroy]
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
