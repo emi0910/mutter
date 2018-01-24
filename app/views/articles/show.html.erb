@@ -11,3 +11,23 @@
 </div>
 
 <div class="clear"></div>
+
+<% if logged_in? %>
+<div class="fixed-action-btn horizontal">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">menu</i>
+  </a>
+  <ul>
+    <li>
+      <%= link_to edit_article_path(@article), class: "btn-floating green" do %>
+        <i class="large material-icons">create</i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to @article, method: :delete, class: "btn-floating blue", data: {confirm: "You sure?"} do %>
+        <i class="large material-icons">delete</i>x
+      <% end %>
+    </li>
+  </ul>
+</div>
+<% end %>

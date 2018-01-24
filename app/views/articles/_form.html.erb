@@ -14,7 +14,7 @@
   <%= f.hidden_field :count %>
 
   <div class="input-field">
-    <%= f.select :category_id, @categories.map {|c| [c.name, c.id] }.unshift(["Choose category", 0]), selected: 0, disabled: 0 %>
+    <%= f.select :category_id, @categories.map {|c| [c.name, c.id] }.unshift(["Choose category", 0]), disabeld: 0, class: 'form-control' %>
     <%= f.label "Category" %>
   </div>
 

@@ -33,6 +33,26 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    @categories = Category.all
+    @image = Image.new
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update_attributes(article_params)
+      flash[:success] = "Article was updated"
+      redirect_to @article
+    else
+      @categories = Category.all
+      @image = Image.new
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Article.find(params[:id]).destroy
+    flash[:success] = "Article was deleted"
+    redirect_to articles_url
   end
 
   def preview

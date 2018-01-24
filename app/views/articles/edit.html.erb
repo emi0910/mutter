@@ -1,0 +1,48 @@
+<% provide(:title, "Edit Article") %>
+<% provide(:button_text, "Save") %>
+<h1>Update Article</h1>
+
+<div id="photo_inserter" class="right">
+  <span class="message"></span>
+  &nbsp;
+  <a class="share" href="#" title="Insert to Write pane">
+    <i class="material-icons">share</i>
+  </a>
+  &nbsp;
+  <a class="remove" href="#" title="Clear all marks">
+    <i class="material-icons">cancel</i>
+  </a>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a href="#write">Write</a></li>
+      <li class="tab col s3"><a href="#preview" id="preview-tab">Preview</a></li>
+      <li class="tab col s3"><a href="#photos" id="upload-tab">Photos</a></li>
+    </ul>
+  </div>
+
+  <div id="write" class="col s12">
+    <%= render 'form' %>
+  </div>
+
+  <div id="preview" class="preview_area col s12">
+  </div>
+
+  <div id="photos" class="col s12">
+  </div>
+</div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red waves-effect waves-light modal-trigger" href="#add_photo">
+    <i class="large material-icons">add_a_photo</i>
+  </a>
+</div>
+
+<div id="add_photo" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h5>Upload photo</h5>
+    <%= render "images/form" %>
+  </div>
+</div>
