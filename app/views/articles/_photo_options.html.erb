@@ -1,0 +1,37 @@
+<div id="photo_inserter" class="right">
+  <span class="message"></span>
+  &nbsp;
+  <a class="share" href="#" title="Insert to Write pane">
+    <i class="material-icons">share</i>
+  </a>
+  &nbsp;
+  <a class="remove" href="#" title="Clear all marks">
+    <i class="material-icons">cancel</i>
+  </a>
+  &nbsp;
+  <a class="delete modal-trigger" href="#delete_photos" title="Delete all marks">
+    <i class="material-icons">delete</i>
+  </a>
+</div>
+
+<div id="delete_photos" class="modal">
+  <div class="message modal-content">
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="delete_btn modal-action modal-close waves-effect waves-green btn-flat">DELETE</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">CANCEL</a>
+  </div>
+</div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red waves-effect waves-light modal-trigger" href="#add_photo">
+    <i class="large material-icons">add_a_photo</i>
+  </a>
+</div>
+
+<div id="add_photo" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h5>Upload photo</h5>
+    <%= render "images/form" %>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :logged_in_user, only: [:index, :create, :show]
+  before_action :logged_in_user, only: [:index, :create, :show, :destroy]
 
   def index
     @images = Image.paginate(page: params[:page], per_page: 12)
@@ -18,6 +18,11 @@ class ImagesController < ApplicationController
     else
       render plain: "bad request", status: :bad_request
     end
+  end
+
+  def destroy
+    Image.find(params[:id]).destroy
+    render plain: "Image was deleted"
   end
 
   private

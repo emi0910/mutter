@@ -45,25 +45,35 @@ getPhotoList = (images_url, on_success_func) ->
     success: (html, status, xhr) ->
       on_success_func(html)
 
-countMarkedPhotos = (count_div, inserter_div) ->
+countMarkedPhotos = (count_div, inserter_div, deleter_div) ->
   count = $(count_div).find('.marked').length
   s = if count > 1 then "s" else ""
   if count > 0
     $(inserter_div).children().show("slide")
     $("#{inserter_div} > .message").html "#{count} photo#{s} marked"
+    $("#{deleter_div}  > .message").html "<h5>Delete #{count} marked photo#{s}?</h5>"
   else
     $(inserter_div).children().hide("slide")
 
-clearMarkedPhotos = (photo_div, inserter_div) ->
+clearMarkedPhotos = (photo_div, inserter_div, deleter_div) ->
   $(photo_div).find('.marked').removeClass('marked')
   $(photo_div).find('i.scale-transition').addClass('scale-out')
-  countMarkedPhotos(photo_div, inserter_div)
+  countMarkedPhotos(photo_div, inserter_div, deleter_div)
 
 insertMarkedPhotos = (photo_div) ->
   $(photo_div).find('.thumb-box').each (index) ->
     if $(this).children('.marked').length > 0
       photo = $(this).children('img')[0]
       insertToWriterPanel "![](#{rootPath + photo.id}){:width=\"300px\" class=\"photo\"}\n"
+
+deleteMarkedPhotos = (photo_div) ->
+  $(photo_div).find('.thumb-box').each (index) ->
+    if $(this).children('.marked').length > 0
+      photo = $(this).children('img')[0]
+      $.ajax
+        url: rootPath + photo.id
+        type: "DELETE"
+        headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
 
 insertPhotosInTab = (images_url) ->
   $('#photos').html(
@@ -83,16 +93,22 @@ insertPhotosInTab = (images_url) ->
     $('div.thumb-box').on 'click', (ev) ->
       $(this).find('img').toggleClass('marked')
       $(this).children('i').toggleClass('scale-out')
-      countMarkedPhotos("#photos", "#photo_inserter")
+      countMarkedPhotos("#photos", "#photo_inserter", "#delete_photos")
       ev.preventDefault()
 
     $('#photo_inserter .remove').on 'click', (ev) ->
-      clearMarkedPhotos("#photos", "#photo_inserter")
+      clearMarkedPhotos("#photos", "#photo_inserter", "#delete_photos")
       ev.preventDefault()
 
     $('#photo_inserter .share').on 'click', (ev) ->
       insertMarkedPhotos("#photos")
-      clearMarkedPhotos("#photos", "#photo_inserter")
+      clearMarkedPhotos("#photos", "#photo_inserter", "#delete_photos")
+      ev.preventDefault()
+
+    $('#delete_photos .delete_btn').on 'click', (ev) ->
+      deleteMarkedPhotos('#photos')
+      clearMarkedPhotos("#photos", "#photo_inserter", "#delete_photos")
+      insertPhotosInTab(rootPath + 'images')
       ev.preventDefault()
 
     $('.async-pagination a').on 'click', (ev) ->
