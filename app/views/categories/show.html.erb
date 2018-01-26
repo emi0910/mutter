@@ -1,24 +1,21 @@
 <% provide(:title, "Category") %>
 
 <div class="row">
-  <div class="col s12">
-    <%= image_tag @category.image.url, class: 'responsive-img' %>
-  </div>
-</div>
-
-<div class="row">
   <div class="col s6">
-    <h5><%= @category.name %></h5>
-    <p>
-      <%= @category.description %>
-    </p>
-  </div>
-
-  <div class="col s6">
-    <div class="col s12">
-      <h5>Articles</h5>
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag @category.image.url, class: 'responsive-img' %>
+      </div>
+      <div class="card-content">
+        <span class="card-title"><%= @category.name %></span>
+        <p>
+          <%= @category.description %>
+        </p>
+      </div>
     </div>
+  </div>
 
+  <div class="col s6">
     <%= render @articles, mcol: 'm12' %>
 
     <div class="col s12">
