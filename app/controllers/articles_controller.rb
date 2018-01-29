@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.new(article_params)
 
     if @article.save
+      notify_to_slack
       flash[:success] = "Article was successfully created."
       redirect_to @article
     else
@@ -85,5 +86,12 @@ class ArticlesController < ApplicationController
     articles = articles.created_by(params[:user_id]) if params[:user_id]
     articles = articles.belong_to(params[:category_id]) if params[:category_id]
     articles
+  end
+
+  def notify_to_slack
+    if (url = Settings.SLACK_INCOMING_WEBHOOK_URL)
+      client = SlackNotifier.new(url)
+      client.post_article(@article, {article: article_url(@article), user: user_url(@article.user)})
+    end
   end
 end

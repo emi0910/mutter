@@ -19,6 +19,8 @@ gem 'carrierwave', '~> 0.9'
 gem 'carrierwave-dropbox', :github => 'mful/carrierwave-dropbox'
 gem 'rmagick'
 gem 'dotenv-rails'
+gem 'settingslogic'
+gem 'slack-incoming-webhooks'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
