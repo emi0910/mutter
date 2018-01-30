@@ -9,16 +9,21 @@
           <% end %>
         </small>
       </span>
-      <span class="right">
+      <div class="right">
         <i class="material-icons tiny">subject</i>
         <%= link_to article.category.name, article.category %>
         &nbsp;
         <i class="material-icons tiny">person</i>
         <%= link_to article.user.display_name, article.user %>
+      </div>
+      <br>
+      <div class="right">
+        <i class="material-icons tiny">access_time</i>
+        <%= article.created_at.strftime("%b. %d, %Y") %>
         &nbsp;
         <i class="material-icons tiny">visibility</i>
         <%= article.count %>
-      </span>
+      </div>
     </div>
 
     <div class="card-action">
